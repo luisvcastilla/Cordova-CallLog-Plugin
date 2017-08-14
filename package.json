@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-android-call-log",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "Cordova Android Call log Plugin",
   "cordova": {
     "id": "cordova-plugin-android-call-log",
