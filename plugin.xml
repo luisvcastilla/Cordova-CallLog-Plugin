@@ -2,19 +2,24 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		id="cordova-plugin-android-call-log"
-		version="2.0">
+		version="1.0">
 
 	<name>Call Log</name>
 
-	<description>
-		This plugin allows you to retrieve the phone's call log.
-	</description>
+	<description>This plugin allows you to retrieve the phone's call log.</description>
+	<license>Apache 2.0</license>
+    <keywords>cordova, calllog</keywords>
+    <repo>https://github.com/luisvcastilla/cordova-plugin-android-call-log.git</repo>
 
 	<license>MIT</license>
 
 	<engines>
-		<engine name="cordova" version=">=3.0.0"/>
+		<engine name="cordova" version=">=5.0.0"/>
 	</engines>
+
+	<js-module src="www/call-log.js" name="CallLog">
+        <clobbers target="window.plugins.calllog" />
+    </js-module>
 
 	<!-- android -->
 	<platform name="android">
