@@ -1,4 +1,4 @@
-package com.ubookr.plugins;
+package org.apache.cordova.call.log;
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -21,14 +21,14 @@ import org.json.JSONObject;
 import java.util.Calendar;
 import java.util.Date;
 
-public class CallLogPlugin extends CordovaPlugin {
+public class CallLog extends CordovaPlugin {
 
     private static final String ACTION_LIST = "list";
     private static final String ACTION_CONTACT = "contact";
     private static final String ACTION_SHOW = "show";
     private static final String ACTION_DELETE = "delete";
     private static final String ACTION_INSERT = "insert";
-    private static final String TAG = "CallLogPlugin";
+    private static final String TAG = "CallLog";
     // Permission request stuff.
     private static final int READ_CALL_LOG_REQ_CODE = 0;
     private static final String PERMISSION_DENIED_ERROR =
@@ -186,7 +186,7 @@ public class CallLogPlugin extends CordovaPlugin {
                 PluginResult result;
                 try {
 
-                    int res = CallLogPlugin.this.cordova.getActivity().getContentResolver().delete(
+                    int res = CallLog.this.cordova.getActivity().getContentResolver().delete(
                         android.provider.CallLog.Calls.CONTENT_URI, "_ID = " + args.getString(0), null);
                     if (res == 1) {
                         result = new PluginResult(Status.OK, res);
@@ -224,7 +224,7 @@ public class CallLogPlugin extends CordovaPlugin {
                     values.put(android.provider.CallLog.Calls.CACHED_NUMBER_TYPE, 0);
                     values.put(android.provider.CallLog.Calls.CACHED_NUMBER_LABEL, "");
 
-                    uri = CallLogPlugin.this.cordova.getActivity().getContentResolver().insert(android.provider.CallLog.Calls.CONTENT_URI, values);
+                    uri = CallLog.this.cordova.getActivity().getContentResolver().insert(android.provider.CallLog.Calls.CONTENT_URI, values);
 
                     result = new PluginResult(Status.OK, uri.toString());
 
@@ -290,7 +290,7 @@ public class CallLogPlugin extends CordovaPlugin {
 
             callLogCursor.close();
         } catch (Exception e) {
-            Log.d("CallLog_Plugin", " ERROR : SQL to get cursor: ERROR " + e.getMessage());
+            Log.d("CallLog", " ERROR : SQL to get cursor: ERROR " + e.getMessage());
         }
 
         return callLog;
